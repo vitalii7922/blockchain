@@ -2,7 +2,6 @@ package blockchain;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.Random;
 
 class StringUtil {
     /* Applies Sha256 to a string and returns a hash. */

@@ -6,6 +6,16 @@ public class Block {
     private long timeStamp;
     private String previousBlockHash;
     private String blockHash;
+    private int magicNumber;
+    private long timeGenerating;
+
+    public Block(long id, long timeStamp, String blockHash, int magicNumber, long timeGenerating) {
+        this.id = id;
+        this.timeStamp = timeStamp;
+        this.blockHash = blockHash;
+        this.magicNumber = magicNumber;
+        this.timeGenerating = timeGenerating;
+    }
 
     public long getId() {
         return id;
@@ -39,12 +49,34 @@ public class Block {
         this.blockHash = blockHash;
     }
 
+    public int getMagicNumber() {
+        return magicNumber;
+    }
+
+    public void setMagicNumber(int magicNumber) {
+        this.magicNumber = magicNumber;
+    }
+
+    public long getTimeGenerating() {
+        return timeGenerating;
+    }
+
+    public void setTimeGenerating(long timeGenerating) {
+        this.timeGenerating = timeGenerating;
+    }
+
+
     @Override
     public String toString() {
-        return "Block:\n" +
-                "Id: " + id + "\n" +
-                "Timestamp: " + timeStamp + "\n" +
-                "Hash of the previous block:\n" + previousBlockHash + "\n" +
-                "Hash of the block:\n" + blockHash + "\n";
+        return String.format("Block:\n" +
+                "Id: %d\n" +
+                "Timestamp: %d\n" +
+                "Magic number: %d\n" +
+                "Hash of the previous block:\n%s\n" +
+                "Hash of the block:\n%s\n" +
+                "Block was generating for %d seconds\n", id, timeStamp, magicNumber, previousBlockHash, blockHash,
+                timeGenerating);
+
+
     }
 }
