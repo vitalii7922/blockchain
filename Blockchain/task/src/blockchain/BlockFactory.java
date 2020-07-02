@@ -1,11 +1,12 @@
 package blockchain;
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
+abstract class BlockFactory {
+    final LinkedList<Block> chain = new LinkedList<>();
+    final AtomicInteger atomicInteger = new AtomicInteger();
+    final Random randomMagicNumber = new Random();
 
-public class BlockFactory implements BlockElementFactory {
-
-
-    @Override
-    public Block makeBlock(int id, long timeStamp, int magicNumber, String currentBlockHash, long timeGenerating) {
-        return new Block(id, timeStamp, currentBlockHash, magicNumber, timeGenerating);
-    }
+    protected abstract void generateBlock(int zerosNumber);
 }

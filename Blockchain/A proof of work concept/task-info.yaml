@@ -236,6 +236,9 @@ files:
 - name: src/blockchain/BlockFactory.java
   visible: true
   learner_created: true
+- name: src/blockchain/BlockImpl.java
+  visible: true
+  learner_created: true
 - name: src/blockchain/BlockElementFactory.java
   visible: true
   learner_created: true
@@ -245,4 +248,4 @@ feedback:
   message: Congratulations! Continue on <a href="https://hyperskill.org/projects/50/stages/272/implement">JetBrains
     Academy</a>
   time: Wed, 01 Jul 2020 20:48:44 UTC
-record: -1
+record: 2

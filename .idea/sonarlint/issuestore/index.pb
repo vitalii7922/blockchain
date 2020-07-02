@@ -3,8 +3,6 @@ Y
 )Blockchain/task/src/blockchain/Block.java,7\e\7e5615477fc8a0d437b982abc804a37097606893
 ^
 .Blockchain/task/src/blockchain/StringUtil.java,8\b\8b073df570ed6235a9c0c6bc0b4e4c2207039701
-^
-.Blockchain/task/src/blockchain/BlockChain.java,4\1\4138c969827a62dcb6b175366b3fc2ac0de52a19
 K
 .gradle/5.3.1/gc.properties,1\7\17d2e9a865adadcd07d0d7806803667f807338f2
 I
@@ -147,3 +145,5 @@ X
 (Blockchain/task/test/BlockchainTest.java,c\f\cf78a53da254e2d95a588ebf98e241a8b3b69927
 X
 (Blockchain/task/src/blockchain/Main.java,8\5\854a1cff082e26484c959eacd3139d8cfe90431d
+`
+0Blockchain/task/src/blockchain/BlockFactory.java,9\8\98323531b1613bc5de3f817dd67eec3a0a7b9429
