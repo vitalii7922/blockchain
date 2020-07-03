@@ -1,50 +1,32 @@
 package blockchain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-public class Block {
-    private long id;
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+class Block {
+    private int id;
     private long timeStamp;
     private String previousBlockHash;
     private String blockHash;
+    private int magicNumber;
+    private int timeGenerating;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(long timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    public String getPreviousBlockHash() {
-        return previousBlockHash;
-    }
-
-    public void setPreviousBlockHash(String previousBlockHash) {
-        this.previousBlockHash = previousBlockHash;
-    }
-
-    public String getBlockHash() {
-        return blockHash;
-    }
-
-    public void setBlockHash(String blockHash) {
-        this.blockHash = blockHash;
-    }
 
     @Override
     public String toString() {
-        return "Block:\n" +
-                "Id: " + id + "\n" +
-                "Timestamp: " + timeStamp + "\n" +
-                "Hash of the previous block:\n" + previousBlockHash + "\n" +
-                "Hash of the block:\n" + blockHash + "\n";
+        return String.format("Block:\n" +
+                        "Id: %d\n" +
+                        "Timestamp: %d\n" +
+                        "Magic number: %d\n" +
+                        "Hash of the previous block:\n%s\n" +
+                        "Hash of the block:\n%s\n" +
+                        "Block was generating for %d seconds\n", id, timeStamp, magicNumber, previousBlockHash,
+                blockHash, timeGenerating);
     }
 }

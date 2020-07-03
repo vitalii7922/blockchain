@@ -2,6 +2,7 @@ package blockchain;
 
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 public class BlockChain {
 
@@ -20,7 +21,6 @@ public class BlockChain {
         block.setTimeStamp(date.getTime());
         block.setPreviousBlockHash(chain.isEmpty() ? "0" : chain.getLast().getBlockHash());
         chain.add(block);
-        //change this block
     }
 
     private void generateChain(int size) {
