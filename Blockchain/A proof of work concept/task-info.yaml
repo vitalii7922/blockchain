@@ -233,12 +233,11 @@ files:
         }
     }
   learner_created: false
-- name: src/blockchain/BlockFactory.java
-  visible: true
-  learner_created: true
-- name: src/blockchain/BlockElementFactory.java
-  visible: true
-  learner_created: true
 feedback_link: https://hyperskill.org/projects/50/stages/272/implement
+<<<<<<< HEAD
 status: Solved
 record: 2
+=======
+status: Unchecked
+record: -1
+>>>>>>> parent of 1df8c65... second stage completed
