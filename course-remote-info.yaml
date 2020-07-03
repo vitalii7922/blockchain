@@ -102,14 +102,14 @@ topics:
     theory_id: 3523
   - title: Conditional statement
     theory_id: 3503
+  - title: Ternary operator
+    theory_id: 3506
   - title: The for-loop
     theory_id: 3505
   - title: The while and do-while loops
     theory_id: 3498
   - title: Branching statements
     theory_id: 3507
-  - title: Ternary operator
-    theory_id: 3506
   - title: Iterating over arrays
     theory_id: 3602
   - title: Defining methods
