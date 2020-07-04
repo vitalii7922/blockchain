@@ -9,5 +9,6 @@ public class Main {
         BlockFactory blockFactory = new BlockChainFactory();
         blockFactory.generateChain(5, scanner.nextInt());
         blockFactory.printChain();
+        //added comment
     }
 }
