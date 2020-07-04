@@ -1,4 +1,5 @@
 package blockchain;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
@@ -32,28 +33,5 @@ public class BlockChainFactory extends BlockFactory {
 
     private String generateStringWithNZeros(int zerosNumber) {
         return "0".repeat(Math.max(0, zerosNumber));
-    }
-
-    @Override
-    protected void generateChain(int size, int zerosNumber) {
-        for (int i = 0; i < size; i++) {
-            generateBlock(zerosNumber);
-        }
-    }
-
-    public boolean validateChain() {
-        for (int i = 1; i < chain.size(); i++) {
-            if (!chain.get(i).getPreviousBlockHash().equals(chain.get(i - 1).getBlockHash())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    protected void printChain() {
-        for (Block block : chain) {
-            System.out.println(block);
-        }
     }
 }

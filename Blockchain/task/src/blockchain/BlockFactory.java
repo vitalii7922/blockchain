@@ -1,4 +1,5 @@
 package blockchain;
+
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,7 +11,24 @@ abstract class BlockFactory {
 
     protected abstract void generateBlock(int zerosNumber);
 
-    protected abstract void generateChain(int size, int zerosNumber);
+    void generateChain(int size, int zerosNumber) {
+        for (int i = 0; i < size; i++) {
+            generateBlock(zerosNumber);
+        }
+    }
 
-    protected abstract void printChain();
+    boolean validateChain() {
+        for (int i = 1; i < chain.size(); i++) {
+            if (!chain.get(i).getPreviousBlockHash().equals(chain.get(i - 1).getBlockHash())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void printChain() {
+        for (Block block : chain) {
+            System.out.println(block);
+        }
+    }
 }
