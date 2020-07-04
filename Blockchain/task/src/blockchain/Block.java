@@ -15,7 +15,7 @@ class Block {
     private String previousBlockHash;
     private String blockHash;
     private int magicNumber;
-    private int timeGenerating;
+    private long timeGenerating;
 
 
     @Override

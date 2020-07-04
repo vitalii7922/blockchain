@@ -9,4 +9,8 @@ abstract class BlockFactory {
     final Random randomMagicNumber = new Random();
 
     protected abstract void generateBlock(int zerosNumber);
+
+    protected abstract void generateChain(int size, int zerosNumber);
+
+    protected abstract void printChain();
 }
