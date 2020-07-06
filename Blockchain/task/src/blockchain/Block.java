@@ -5,11 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
-class Block {
+class Block implements Serializable {
     private int id;
     private long timeStamp;
     private String previousBlockHash;
