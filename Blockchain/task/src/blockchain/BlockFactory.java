@@ -11,16 +11,13 @@ abstract class BlockFactory implements Runnable {
 
     protected abstract void generateBlock();
 
-    protected void generateChain(int size) throws IOException {
-        System.out.println("generate chain");
+    synchronized void generateChain(int size) throws IOException {
         if (!chain.isEmpty()) {
             blockId = new AtomicInteger(chain.size());
         }
-        for (int i = 0; i < size; i++) {
-            generateBlock();
-        }
-        System.out.println(chain.size());
-        ;
+            for (int i = 0; i < size; i++) {
+                generateBlock();
+            }
         SerializationUtils.serialize(chain);
     }
 

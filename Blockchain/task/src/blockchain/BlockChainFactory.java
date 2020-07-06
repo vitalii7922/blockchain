@@ -2,7 +2,6 @@ package blockchain;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class BlockChainFactory extends BlockFactory implements Runnable {
     private int zerosNumber;
@@ -10,14 +9,14 @@ public class BlockChainFactory extends BlockFactory implements Runnable {
     private int magicNumber;
     private String hash;
 
-    protected synchronized void generateBlock() {
-        System.out.println("block");
+    protected void generateBlock() {
         String zeros = generateStringWithNZeros(zerosNumber);
         long startTime = System.currentTimeMillis() / 1000;
         validateHash(zeros);
         long resultTime = System.currentTimeMillis() / 1000 - startTime;
         takeZerosNumber(resultTime);
         Block block = Block.builder()
+                .miner(String.valueOf(Thread.activeCount()))
                 .id(blockId.incrementAndGet())
                 .timeStamp(new Date().getTime())
                 .magicNumber(magicNumber)
@@ -63,7 +62,6 @@ public class BlockChainFactory extends BlockFactory implements Runnable {
 
     @Override
     public void run() {
-//        System.out.println("started");
         try {
             generateChain(5);
         } catch (IOException e) {

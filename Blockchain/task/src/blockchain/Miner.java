@@ -2,21 +2,24 @@ package blockchain;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 class Miner {
     private BlockFactory blockFactory;
     private static final int POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private static final ExecutorService executor = Executors.newFixedThreadPool(POOL_SIZE);
 
     void setFactory(BlockFactory blockFactory) {
         this.blockFactory = blockFactory;
     }
 
-    void mine() {
+    void mine() throws InterruptedException {
+        ExecutorService executor = Executors.newFixedThreadPool(POOL_SIZE);
         executor.submit(() -> blockFactory.run());
+        executor.awaitTermination(10, TimeUnit.SECONDS);
         executor.shutdown();
-/*        Thread thread = new Thread(blockFactory);
-        thread.start();
-        blockFactory.printChain();*/
+        /*Thread thread1 = new Thread(blockFactory, "thread1");
+        Thread thread2 = new Thread(blockFactory, "thread2");
+        thread1.start();
+        thread2.start();*/
     }
 }

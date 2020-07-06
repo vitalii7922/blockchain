@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 class Block implements Serializable {
     private int id;
+    String miner;
     private long timeStamp;
     private String previousBlockHash;
     private String blockHash;
@@ -25,13 +26,14 @@ class Block implements Serializable {
     @Override
     public String toString() {
         return String.format("Block:\n" +
+                        "Created by miner # %s\n" +
                         "Id: %d\n" +
                         "Timestamp: %d\n" +
                         "Magic number: %d\n" +
                         "Hash of the previous block:\n%s\n" +
                         "Hash of the block:\n%s\n" +
                         "Block was generating for %d seconds\n" +
-                        "%s\n", id, timeStamp, magicNumber, previousBlockHash,
+                        "%s\n", miner, id, timeStamp, magicNumber, previousBlockHash,
                 blockHash, timeGenerating, changedZerosNumber);
     }
 }

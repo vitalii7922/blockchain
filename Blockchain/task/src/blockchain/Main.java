@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         BlockChainFactory blockFactory = new BlockChainFactory();
        /* Optional<LinkedList<Block>> optionalBlocks =
                 Optional.ofNullable((LinkedList<Block>) SerializationUtils.deserialize());*/
