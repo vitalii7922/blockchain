@@ -1,22 +1,27 @@
 package blockchain;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-abstract class BlockFactory {
+abstract class BlockFactory implements Runnable {
     LinkedList<Block> chain = new LinkedList<>();
-    AtomicInteger atomicInteger;
+    AtomicInteger blockId = new AtomicInteger();
     final Random randomMagicNumber = new Random();
 
-    protected abstract void generateBlock(int zerosNumber);
+    protected abstract void generateBlock();
 
-    void generateChain(int size, int zerosNumber) {
+    protected void generateChain(int size) throws IOException {
+        System.out.println("generate chain");
         if (!chain.isEmpty()) {
-            atomicInteger = new AtomicInteger(chain.size());
+            blockId = new AtomicInteger(chain.size());
         }
         for (int i = 0; i < size; i++) {
-            generateBlock(zerosNumber);
+            generateBlock();
         }
+        System.out.println(chain.size());
+        ;
+        SerializationUtils.serialize(chain);
     }
 
     boolean validateChain() {
@@ -34,7 +39,7 @@ abstract class BlockFactory {
         }
     }
 
-    public void setChain(LinkedList<Block> chain) {
+    void setChain(LinkedList<Block> chain) {
         this.chain = chain;
     }
 }

@@ -6,15 +6,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Scanner scanner = new Scanner(System.in);
-        BlockFactory blockFactory = new BlockChainFactory();
-        Optional<LinkedList<Block>> optionalBlocks =
-                Optional.ofNullable((LinkedList<Block>) SerializationUtils.deserialize());
-        optionalBlocks.ifPresent(blockFactory::setChain);
-        if (blockFactory.validateChain()) {
-            System.out.print("Enter how many zeros the hash must start with: ");
-            blockFactory.generateChain(5, scanner.nextInt());
+        BlockChainFactory blockFactory = new BlockChainFactory();
+       /* Optional<LinkedList<Block>> optionalBlocks =
+                Optional.ofNullable((LinkedList<Block>) SerializationUtils.deserialize());*/
+//        optionalBlocks.ifPresent(blockFactory::setChain);
+        Miner miner = new Miner();
+        miner.setFactory(blockFactory);
+        miner.mine();
+
+        /*if (blockFactory.validateChain()) {
+            blockFactory.generateChain(5);
             blockFactory.printChain();
-        }
+        }*/
     }
 }
