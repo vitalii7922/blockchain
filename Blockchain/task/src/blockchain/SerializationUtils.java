@@ -7,7 +7,7 @@ class SerializationUtils {
     private SerializationUtils() {
     }
 
-    static synchronized void serialize(Object obj) throws IOException {
+    static void serialize(Object obj) throws IOException {
         FileOutputStream fos = new FileOutputStream("blockchain/file.txt");
         BufferedOutputStream bos = new BufferedOutputStream(fos);
         try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
