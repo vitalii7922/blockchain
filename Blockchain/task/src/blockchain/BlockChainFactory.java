@@ -1,32 +1,27 @@
 package blockchain;
-
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class BlockChainFactory extends BlockFactory implements Runnable {
-    private int zerosNumber;
-    private String message;
-    private int magicNumber;
-    private String hash;
-
-    protected void generateBlock() {
+public class BlockChainFactory extends BlockFactory {
+    protected synchronized void generateBlock() {
         String zeros = generateStringWithNZeros(zerosNumber);
-        long startTime = System.currentTimeMillis() / 1000;
+        long startTime = new Date().getTime();
         validateHash(zeros);
-        long resultTime = System.currentTimeMillis() / 1000 - startTime;
+        long resultTime = new Date().getTime() - startTime;
         takeZerosNumber(resultTime);
         Block block = Block.builder()
-                .miner(String.valueOf(Thread.activeCount()))
+                .miner(String.valueOf(Thread.currentThread().getId()))
                 .id(blockId.incrementAndGet())
                 .timeStamp(new Date().getTime())
                 .magicNumber(magicNumber)
                 .blockHash(hash)
+                .zerosNumber(zerosNumber)
                 .timeGenerating(resultTime)
                 .previousBlockHash(chain.isEmpty() ? "0" : chain.getLast().getBlockHash())
                 .changedZerosNumber(message)
                 .build();
         chain.add(block);
-        System.out.println(block);
     }
 
 
@@ -61,11 +56,33 @@ public class BlockChainFactory extends BlockFactory implements Runnable {
     }
 
     @Override
-    public void run() {
-        try {
-            generateChain(5);
-        } catch (IOException e) {
-            e.printStackTrace();
+    protected void generateChain() throws IOException {
+        if (!chain.isEmpty()) {
+            blockId = new AtomicInteger(chain.size());
+            zerosNumber = chain.getLast().getZerosNumber();
         }
+        generateBlock();
+        SerializationUtils.serialize(chain);
+    }
+
+    @Override
+    protected boolean validateChain() {
+        for (int i = 1; i < chain.size(); i++) {
+            if (!chain.get(i).getPreviousBlockHash().equals(chain.get(i - 1).getBlockHash())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    protected void printChain() {
+        for (Block block : chain) {
+            System.out.println(block);
+        }
+    }
+
+    void setChain(LinkedList<Block> chain) {
+        this.chain = chain;
     }
 }

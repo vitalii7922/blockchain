@@ -147,3 +147,13 @@ X
 (Blockchain/task/src/blockchain/Main.java,8\5\854a1cff082e26484c959eacd3139d8cfe90431d
 `
 0Blockchain/task/src/blockchain/BlockFactory.java,9\8\98323531b1613bc5de3f817dd67eec3a0a7b9429
+F
+Blockchain/block-chain,5\1\5167a8db10281e72c7a13bd382b610e157cfb27b
+f
+6Blockchain/task/src/blockchain/SerializationUtils.java,9\1\91c87f1122de8aa19000b3a2375b284665a58d36
+C
+Blockchain/file.txt,4\2\42ac138ca7b450a781f318705d64c6514acc0694
+Y
+)Blockchain/task/src/blockchain/Miner.java,f\5\f570b3c6cc9a6acb3a62dc7ff3875407a0bc4018
+e
+5Blockchain/task/src/blockchain/BlockChainFactory.java,1\2\12ba11c1cf40cde9c4131820c6183ab0d8b7ab35

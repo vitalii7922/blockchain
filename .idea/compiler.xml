@@ -14,6 +14,11 @@
         <module name="util_test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="11">
+      <module name="Blockchain-task_main" target="11" />
+      <module name="Blockchain-task_test" target="11" />
+      <module name="util_main" target="11" />
+      <module name="util_test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

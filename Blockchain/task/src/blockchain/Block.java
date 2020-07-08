@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 class Block implements Serializable {
     private int id;
-    String miner;
+    private String miner;
     private long timeStamp;
     private String previousBlockHash;
     private String blockHash;
