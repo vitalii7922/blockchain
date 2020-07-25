@@ -21,6 +21,7 @@ class Block implements Serializable {
     private long timeGenerating;
     private int zerosNumber;
     private String changedZerosNumber;
+    private String data;
 
 
     @Override
@@ -32,6 +33,7 @@ class Block implements Serializable {
                         "Magic number: %d\n" +
                         "Hash of the previous block:\n%s\n" +
                         "Hash of the block:\n%s\n" +
+                        "Block data:\n" +
                         "Block was generating for %d seconds\n" +
                         "%s\n", miner, id, timeStamp, magicNumber, previousBlockHash,
                 blockHash, timeGenerating, changedZerosNumber);

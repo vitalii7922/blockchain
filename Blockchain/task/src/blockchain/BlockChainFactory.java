@@ -1,4 +1,5 @@
 package blockchain;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -6,9 +7,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BlockChainFactory extends BlockFactory {
     protected synchronized void generateBlock() {
         String zeros = generateStringWithNZeros(zerosNumber);
-        long startTime = new Date().getTime();
-        validateHash(zeros);
-        long resultTime = new Date().getTime() - startTime;
+        long startTime = System.currentTimeMillis() / 1000;
+        findHashWithLeadZeros(zeros);
+        long resultTime = System.currentTimeMillis() / 1000 - startTime;
         takeZerosNumber(resultTime);
         Block block = Block.builder()
                 .miner(String.valueOf(Thread.currentThread().getId()))
@@ -20,12 +21,13 @@ public class BlockChainFactory extends BlockFactory {
                 .timeGenerating(resultTime)
                 .previousBlockHash(chain.isEmpty() ? "0" : chain.getLast().getBlockHash())
                 .changedZerosNumber(message)
+                .data(chain.isEmpty() ? "no messages" : String.join("\n", messages))
                 .build();
         chain.add(block);
     }
 
 
-    private void validateHash(String zeros) {
+    private void findHashWithLeadZeros(String zeros) {
         do {
             magicNumber = randomMagicNumber.nextInt();
             hash = calculateHash(magicNumber);
@@ -60,6 +62,7 @@ public class BlockChainFactory extends BlockFactory {
         if (!chain.isEmpty()) {
             blockId = new AtomicInteger(chain.size());
             zerosNumber = chain.getLast().getZerosNumber();
+            takeZerosNumber(chain.getLast().getTimeGenerating());
         }
         generateBlock();
         SerializationUtils.serialize(chain);

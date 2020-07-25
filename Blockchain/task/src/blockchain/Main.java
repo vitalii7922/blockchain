@@ -9,7 +9,7 @@ public class Main {
         Optional<LinkedList<Block>> optionalBlocks =
                 Optional.ofNullable((LinkedList<Block>) SerializationUtils.deserialize());
         optionalBlocks.ifPresent(blockFactory::setChain);
-        Miner miner = new Miner();
+        Miners miner = new Miners();
         miner.setFactory(blockFactory);
         if (blockFactory.validateChain()) {
             miner.mine();

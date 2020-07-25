@@ -159,8 +159,6 @@ topics:
     theory_id: 8739
   - title: What are streams
     theory_id: 5533
-  - title: Output streams
-    theory_id: 8837
   - title: Hierarchy of exceptions
     theory_id: 3570
   - title: Exception handling
@@ -187,6 +185,8 @@ topics:
     theory_id: 3648
   - title: Writing files
     theory_id: 3652
+  - title: Output streams
+    theory_id: 8837
   - title: Input streams
     theory_id: 9723
   - title: Final variables
@@ -261,16 +261,18 @@ topics:
     theory_id: 3558
   - title: Standard functional interfaces
     theory_id: 3623
-  - title: Functional data processing with streams
-    theory_id: 3582
   - title: Function composition
     theory_id: 3580
+  - title: Currying
+    theory_id: 3579
+  - title: Optional
+    theory_id: 9699
+  - title: Functional data processing with streams
+    theory_id: 3582
   - title: Filtering elements
     theory_id: 3578
   - title: Map and flatMap
     theory_id: 3568
-  - title: Currying
-    theory_id: 3579
   - title: Reduction methods
     theory_id: 3569
   - title: Collectors
@@ -283,5 +285,5 @@ topics:
     theory_id: 8413
   - title: Parallel streams
     theory_id: 8419
-  - title: Optional
-    theory_id: 9699
+  - title: Infinite streams
+    theory_id: 10180
